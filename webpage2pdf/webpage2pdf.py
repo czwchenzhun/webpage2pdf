@@ -109,3 +109,10 @@ class RenderManager:
     def terminateAll(self):
         for process in self.processList:
             process.terminate()
+
+    def waitFinish(self):
+        while self.taskNum>0:
+            des=self.queFinish.get(True)
+            print(des)
+            self.taskNum-=1
+        self.terminateAll()
